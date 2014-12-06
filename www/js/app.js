@@ -77,7 +77,8 @@ angular.module('todo', ['ionic'])
       return;
     }
     $scope.activeProject.tasks.push({
-      title: task.title
+      title: task.title,
+      status: true
     });
     $scope.taskModal.hide();
 
@@ -85,6 +86,21 @@ angular.module('todo', ['ionic'])
     Projects.save($scope.projects);
 
     task.title = "";
+  };
+    
+  $scope.changeState = function(task) {
+    if(!$scope.activeProject || !task) {
+      return;
+    }
+    if (task.status== false){
+    task.status= true;
+    }
+    else {
+        task.status= false;
+    }
+
+    // Inefficient, but save all the projects
+    Projects.save($scope.projects);
   };
 
   $scope.newTask = function() {
@@ -116,3 +132,9 @@ angular.module('todo', ['ionic'])
   });
 
 });
+
+function MyCtrl($scope, $ionicTabsDelegate) {
+  $scope.selectTabWithIndex = function(index) {
+    $ionicTabsDelegate.select(index);
+  }
+}

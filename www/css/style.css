@@ -1,1 +1,14 @@
-/* Empty. Add your own CSS if you like */
+.item {
+background: #FFFFFF;
+border: 1px solid #7B7B7B;
+border-radius: 4px;
+margin: 30px;
+}
+
+.challenge {
+  color: black;
+}
+
+.task_true {
+    color: blue;
+}
